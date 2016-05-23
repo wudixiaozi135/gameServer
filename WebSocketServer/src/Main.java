@@ -25,6 +25,7 @@ public class Main
             if (in.equals("exit"))
             {
                 s.stop();
+
                 break;
             } else if (in.equals("restart"))
             {
