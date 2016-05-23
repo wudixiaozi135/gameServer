@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="gateway" name="SocketServer">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard -->
+	<!--ANT 1.7 is required -->
+	<!-- 目标 -->
+	<property name="dst_dir"
+		value="D:/Code/javaWorkSpace/SocketServer/release/clean" />
+	<mkdir dir="${dst_dir}" />
+	<property name="dst_gateway_dir" value="${dst_dir}/GateWay" />
+	<mkdir dir="${dst_gateway_dir}" />
+	<property name="dst_gamesever_dir" value="${dst_dir}/GameServer" />
+	<mkdir dir="${dst_gamesever_dir}" />
+	<property name="dst_lib_dir" value="${dst_dir}/lib" />
+	<mkdir dir="${dst_lib_dir}" />
+	<property name="dst_fraud_dir" value="${dst_dir}/fraud" />
+	<mkdir dir="${dst_fraud_dir}" />
+
+	<!-- 源 -->
+	<property name="common_class_path"
+		value=". lib/commons-collections-3.1.jar lib/commons-logging-1.1.1.jar lib/mysql-connector-java-5.0.4-bin.jar lib/proxool-0.9.1.jar lib/quartz-1.6.5.jar lib/proxool-cglib.jar lib/log4j-1.2.16.jar" />
+	<property name="common_file_dir" value="E:/workspace/SocketServer" />
+	<property name="common_file_set" value="${common_file_dir}/bin" />
+	<property name="common_file_lib" value="${common_file_dir}/lib" />
+	<copy todir="${dst_lib_dir}">
+		<fileset dir="${common_file_lib}" />
+	</copy>
+
+	<target name="gateway">
+		<jar destfile="${dst_gateway_dir}/socket_gateway.jar">
+			<manifest>
+				<attribute name="Main-Class" value="com.xinyun.socket.gateway.GateWay" />
+				<attribute name="Class-Path" value="${common_class_path}" />
+			</manifest>
+			<fileset dir="${common_file_set}" />
+		</jar>
+		<copy todir="${dst_gateway_dir}"
+			file="${common_file_dir}/src/com/xinyun/socket/gateway/socket_gateway.ini" />
+		<copy todir="${dst_gateway_dir}"
+			file="${common_file_dir}/src/com/xinyun/socket/gateway/部署方法" />
+	</target>
+
+	<target name="gameserver">
+		<jar destfile="${dst_gamesever_dir}/socket_gameserver.jar">
+			<manifest>
+				<attribute name="Main-Class" value="com.xinyun.socket.gameserver.GameServer" />
+				<attribute name="Class-Path" value="${common_class_path}" />
+			</manifest>
+			<fileset dir="${common_file_set}" />
+		</jar>
+		<copy todir="${dst_gamesever_dir}"
+			file="${common_file_dir}/src/com/xinyun/socket/gameserver/socket_gameserver.ini" />
+		<copy todir="${dst_gamesever_dir}"
+			file="${common_file_dir}/src/com/xinyun/socket/gameserver/部署方法" />
+		<mkdir dir="${dst_gamesever_dir}/fraud" />
+		<copy todir="${dst_gamesever_dir}/fraud"
+			file="${common_file_dir}/src/com/xinyun/socket/fraud/fraud_action.properity" />
+	</target>
+
+	<target name="uiconsole">
+		<jar destfile="${dst_gateway_dir}/socket_gateway_uiconsole.jar">
+			<manifest>
+				<attribute name="Main-Class" value="com.xinyun.socket.gateway.ui.UIConsole" />
+				<attribute name="Class-Path" value="${common_class_path}" />
+			</manifest>
+			<fileset dir="${common_file_set}" />
+		</jar>
+		<copy todir="${dst_gateway_dir}"
+			file="${common_file_dir}/src/com/xinyun/socket/gateway/socket_gateway.ini" />
+		<copy todir="${dst_gateway_dir}"
+			file="${common_file_dir}/src/com/xinyun/socket/gateway/部署方法" />
+	</target>
+
+	<target name="fraudDetector">
+		<jar destfile="${dst_fraud_dir}/fraud.jar">
+			<manifest>
+				<attribute name="Main-Class"
+					value="com.xinyun.socket.fraud.OneDayFraudDetector" />
+				<attribute name="Class-Path" value="${common_class_path}" />
+			</manifest>
+			<fileset dir="${common_file_set}" />
+		</jar>
+		<mkdir dir="${dst_fraud_dir}/fraud" />
+		<copy todir="${dst_fraud_dir}/fraud"
+			file="${common_file_dir}/src/com/xinyun/socket/fraud/fraud_action.properity" />
+	</target>
+
+</project>

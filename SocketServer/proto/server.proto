@@ -1,0 +1,17 @@
+option java_package = "com.server.bean";
+option java_outer_classname = "ServerInformationPacket";
+
+
+message ServerProc {
+	optional SUser user = 1;
+	optional SChatInfo chatInfo = 2;
+
+	message SUser {
+		required string result = 1;
+	}
+	message SChatInfo {
+		required string result = 1;
+		required string type = 2;
+		required string words = 3;
+	}
+}

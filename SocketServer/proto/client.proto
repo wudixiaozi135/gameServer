@@ -1,0 +1,18 @@
+option java_package = "com.server.bean";
+option java_outer_classname = "ClientInformationPacket";
+
+
+message ClientProc {
+	optional CUser user = 1;
+	optional CChatInfo chatInfo = 2;
+
+	message CUser {
+		required string id = 1;
+		required string userName = 2;
+		required string userPwd = 3;
+	}
+	message CChatInfo {
+		required string type = 1;
+		required string words = 2;
+	}
+}

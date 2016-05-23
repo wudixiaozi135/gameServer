@@ -1,0 +1,38 @@
+f格式（空格好像不行）
+--充值pay--
+10-08-13 19:00:01#pay#id#name#lv#charge#user_id#order_id
+
+--玩家在线online--
+10-08-13 19:00:01#online#number
+
+---玩家登陆信息 logininfo--
+10-08-13 19:00:01#create#playerId#playerName#playerLv
+10-08-13 19:00:01#login#playerId#playerName#playerLv
+10-08-13 19:00:01#loginout#playerId#playerName#playerLv
+--------------------------------(以上一天一份文件)--------------------------------------------------------------
+---接口调用interface--
+2010-03-08 14:55:27#interface#playerId#playerName#playerLv#IP#actionName#method#params#consumeTime
+---物品获得goods--
+2010-02-22 14:19:20#goods#playerId#playerName#playerLv#getOrLost#goodsId#goodsName
+---玩家属性attribute(type：copper,food,sgold,ugold,jyungong,prestige)--
+2010-01-21 10:56:41#attribute#playerId#playerName#playerLv#getOrLost#type#value
+2010-01-21 10:56:41#attribute#playerId#playerName#playerLv#getOrLost#type#value#opId
+
+
+warMap
+--记录征战次数 recordBattleArmy--
+2010-01-21 10:56:41#recordBattleArmy#playerId#playerName#playerLv#armyName#armyId#isWin
+--记录武将招募次数 recordGeneralRecruit--
+2010-01-21 10:56:41#recordGeneralRecruit#generalId#generalName
+--记录武将战斗结果 recordGeneralWar--
+2010-01-21 10:56:41#recordGeneralWar#generalId#generalName#resultType
+--记录PVP数 recordPVPNumber--
+2010-01-21 10:56:41#recordPVPNumber#pvpType
+
+--------------------------------(以上一天一份文件)--------------------------------------------------------------
+
+分析内容
+1.玩家属性 一天获得多少和消耗多少
+2.一天服务器所产生的获得和消耗多少
+3.物品提供查询功能
+4.玩家接口，提供查询功能
